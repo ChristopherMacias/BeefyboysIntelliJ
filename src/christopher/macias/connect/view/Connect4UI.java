@@ -17,8 +17,7 @@ public class Connect4UI {
                             "2 - Human vs computer\n" +
                             "3 - computer vs computer\n" +
                             "4 - Music list\n"+
-                            "5 - Show Last Game \n"+
-                            "6 - Close Game "
+                            "5 - Close Game "
             );
             int selection = consoleIO.promptForInt(1, 6);
 

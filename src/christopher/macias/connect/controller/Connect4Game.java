@@ -16,6 +16,8 @@ public class Connect4Game {
     private int whoTurn = 0;
     public Music music = new Music();
     ConsoleIO consoleIO = new ConsoleIO();
+    private int yellowWins;
+    private int redWins;
 
 
 
@@ -62,7 +64,7 @@ public class Connect4Game {
                 case 4:// Music
                     Music.currentSongs();
                     bootboot = true;
-                    System.out.print("press next or prev to change songs.\n Pressing done will take you back to main menu");
+                    System.out.print("press next or prev to change songs.\n Pressing done will take you back to main menu\n");
                     boolean running =true;
                     while (running) {
                         switch (consoleIO.prompForString()) {
@@ -84,7 +86,7 @@ public class Connect4Game {
 
                     break;
 
-                case 6:
+                case 5:
                     return;
 
             }
@@ -131,19 +133,25 @@ public class Connect4Game {
             }
             // checking of game is over (win or draw)
             if (board.checkForWin(TokenColor.Red, 0, 0)) {
+                redWins++;
                 System.out.println(board.toString());
                 System.out.println(players[1].getName()+ " Won");
+                System.out.println(players[1].getName()+ " Score: "+ yellowWins + " - " + redWins  +  " :Score "+ players[0].getName()  );
                 looping = false;
                 Music.stopSong();
-                run();
+                new Connect4Game().run();
+
             }
             if (board.checkForWin(TokenColor.Yellow, 0, 0)) {
+                yellowWins++;
                 System.out.println(board.toString());
                 System.out.println(players[0].getName() + " Won");
+                System.out.println(players[1].getName()+ " Score: "+ yellowWins + " - " + redWins +  " :Score "+ players[0].getName()  );
                 looping = false;
                 Music.stopSong();
-                run();
+                new Connect4Game().run();
             }
+
 
 
         }
